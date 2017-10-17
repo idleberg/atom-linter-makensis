@@ -20,7 +20,7 @@ Download the NSIS installer from [SourceForge](https://sourceforge.net/p/nsis) a
 
 Alternatively, you can install NSIS through [Chocolatey](https://chocolatey.org/packages/nsis):
 
-``` bash
+```bash
 $ choco install nsis
 ```
 
@@ -28,7 +28,7 @@ $ choco install nsis
 
 Install NSIS from your distribution's default package manager, for example:
 
-``` bash
+```bash
 # Debian
 $ sudo apt-get install nsis
 
@@ -40,7 +40,7 @@ $ sudo dnf install nsis
 
 Install NSIS using [Homebrew](http://brew.sh/) or [MacPorts](https://www.macports.org/):
 
-``` bash
+```bash
 # Homebrew
 $ brew install nsis
 

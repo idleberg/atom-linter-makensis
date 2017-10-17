@@ -20,7 +20,7 @@ Download the NSIS installer from [SourceForge](https://sourceforge.net/p/nsis) a
 
 Alternatively, you can install NSIS through [Chocolatey](https://chocolatey.org/packages/nsis):
 
-```bash
+```sh
 $ choco install nsis
 ```
 
@@ -28,7 +28,7 @@ $ choco install nsis
 
 Install NSIS from your distribution's default package manager, for example:
 
-```bash
+```sh
 # Debian
 $ sudo apt-get install nsis
 
@@ -40,7 +40,7 @@ $ sudo dnf install nsis
 
 Install NSIS using [Homebrew](http://brew.sh/) or [MacPorts](https://www.macports.org/):
 
-```bash
+```sh
 # Homebrew
 $ brew install nsis
 
@@ -60,7 +60,7 @@ Install `linter-makensis` from Atom's [Package Manager](http://flight-manual.ato
 
 Change to your Atom packages directory:
 
-```bash
+```
 # Windows
 $ cd %USERPROFILE%\.atom\packages
 
@@ -70,13 +70,13 @@ $ cd ~/.atom/packages/
 
 Clone repository as `linter-makensis`:
 
-```bash
+```sh
 $ git clone https://github.com/idleberg/atom-linter-makensis linter-makensis
 ```
 
 Inside the cloned directory, install Node dependencies:
 
-```bash
+```sh
 $ yarn || npm install
 ```
 

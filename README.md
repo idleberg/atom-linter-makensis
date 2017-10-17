@@ -16,7 +16,7 @@ Make sure NSIS is installed with `makensis` is in your [PATH environmental varia
 
 ### Windows
 
-Download the NSIS installer from [SourceForge](https://sourceforge.net/p/nsis) and run setup.
+Download the NSIS installer from [SourceForge](https://sourceforge.net/p/nsis) and run setup. Once completed, you need to edit your [PATH environmental variable](http://superuser.com/a/284351/195953).
 
 Alternatively, you can install NSIS through [Chocolatey](https://chocolatey.org/packages/nsis):
 

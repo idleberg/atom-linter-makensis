@@ -82,7 +82,7 @@ $ yarn || npm install
 
 ## Usage
 
-Your code gets linted whenever you save your document or invoke the *“Lint: Lint”* from the [command-palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
+Your code gets linted whenever you save your document. To tweak the default settings, run *“Linter MakeNSIS: Open Settings”* from the [command-palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
 
 ### Settings
 

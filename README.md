@@ -80,6 +80,19 @@ Inside the cloned directory, install Node dependencies:
 $ yarn || npm install
 ```
 
+## Usage
+
+Your code gets linted whenever you save your document or invoke the *“Lint: Lint”* from the [command-palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
+
+It is recommend to carefully review the package settings:
+
+Setting             | Default    | Description 
+--------------------|------------|------------
+Path to MakeNSIS    | `makensis` | pecify the full path to `makensis`
+PPO Mode            | `true`     | The pre-process mode lints much faster, but ignores warning (unless in strict mode)
+Strict Mode         | `false`    | Treats warnings as errors, requires NSIS v3.0 (or higher)
+Manage Dependencies | `true`     | When enabled, third-party dependencies will be installed automatically
+
 ## License
 
 This work is dual-licensed under [The MIT License](https://opensource.org/licenses/MIT) and the [GNU General Public License, version 2.0](https://opensource.org/licenses/GPL-2.0)

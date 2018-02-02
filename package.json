@@ -29,7 +29,7 @@
   },
   "package-deps": [
     "linter:2.0.0",
-    "linter-ui-default",
+    "linter-ui-default"
   ],
   "dependencies": {
     "atom-linter": "^10.0.0",

@@ -28,7 +28,7 @@
     }
   },
   "package-deps": [
-    "linter:2.0.0",
+    "linter:2.2.0",
     "linter-ui-default"
   ],
   "dependencies": {

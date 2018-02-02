@@ -84,7 +84,7 @@ $ yarn || npm install
 
 Your code gets linted whenever you save your document or invoke the *“Lint: Lint”* from the [command-palette](https://atom.io/docs/latest/getting-started-atom-basics#command-palette).
 
-It is recommend to carefully review the package settings:
+### Settings
 
 Setting             | Default    | Description 
 --------------------|------------|------------

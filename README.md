@@ -88,7 +88,7 @@ Your code gets linted whenever you save your document or invoke the *“Lint: Li
 
 Setting             | Default    | Description 
 --------------------|------------|------------
-Path to MakeNSIS    | `makensis` | pecify the full path to `makensis`
+Path to MakeNSIS    | `makensis` | Specify the full path to `makensis`
 PPO Mode            | `true`     | The pre-process mode lints much faster, but ignores warning (unless in strict mode)
 Strict Mode         | `false`    | Treats warnings as errors, requires NSIS v3.0 (or higher)
 Manage Dependencies | `true`     | When enabled, third-party dependencies will be installed automatically

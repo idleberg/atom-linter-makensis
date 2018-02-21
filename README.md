@@ -12,7 +12,7 @@
 
 ## Prerequisites
 
-Make sure NSIS is installed with `makensis` is in your [PATH environmental variable](http://superuser.com/a/284351/195953).
+Make sure NSIS v3.0 (or higher) is installed with `makensis` is in your [PATH environmental variable](http://superuser.com/a/284351/195953).
 
 ### Windows
 
@@ -30,7 +30,7 @@ Install NSIS from your distribution's default package manager, for example:
 
 ```sh
 # Debian
-$ sudo apt-get install nsis
+$ sudo apt-get -t experimental install nsis
 
 # Red Hat
 $ sudo dnf install nsis
@@ -89,11 +89,9 @@ Your code gets linted whenever you save your document. To tweak the default sett
 Setting             | Default    | Description 
 --------------------|------------|------------
 Path to MakeNSIS    | `makensis` | Specify the full path to `makensis`
-PPO Mode*           | `true`     | The pre-process mode lints much faster, but ignores warning (unless in strict mode)
-Strict Mode*        | `false`    | Treats warnings as errors
+PPO Mode            | `true`     | The pre-process mode lints much faster, but ignores warning (unless in strict mode)
+Strict Mode         | `false`    | Treats warnings as errors
 Manage Dependencies | `true`     | When enabled, third-party dependencies will be installed automatically
-
-\*  requires NSIS v3.0 (or higher)
 
 ## License
 

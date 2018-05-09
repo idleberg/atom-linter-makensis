@@ -10,6 +10,10 @@
 
 [Atom Linter](https://atomlinter.github.io/) provider for [NSIS](https://nsis.sourceforge.net), using `makensis`
 
+![Screenshot](https://raw.github.com/idleberg/atom-linter-makensis/master/screenshot.gif)
+
+*Screenshot of linter-makensis with [Fira Code](http://mozilla.github.io/Fira/) font & the [Hopscotch](https://atom.io/themes/hopscotch) theme*
+
 ## Prerequisites
 
 Make sure NSIS v3.0 (or higher) is installed with `makensis` is in your [PATH environmental variable](http://superuser.com/a/284351/195953).

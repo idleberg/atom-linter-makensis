@@ -96,6 +96,12 @@ Prepend Code        |            | Comma-separated list of commands to be prepen
 Append Code         |            | Comma-separated list of commands to be appended to your script
 Use Wine            | `false`    | When on a non-Windows platform, you can compile installers using [Wine](https://www.winehq.org/)
 
+## Related
+
+- [atom-language-nsis](https://atom.io/packages/language-nsis) - NSIS package for Atom
+- [node-makensis](https://www.npmjs.com/package/makensis) - Node wrapper for `makensis`
+- [vscode-nsis](https://marketplace.visualstudio.com/items?itemName=idleberg.nsis) - NSIS package for Visual Studio Code
+
 ## License
 
 This work is dual-licensed under [The MIT License](https://opensource.org/licenses/MIT) and the [GNU General Public License, version 2.0](https://opensource.org/licenses/GPL-2.0)

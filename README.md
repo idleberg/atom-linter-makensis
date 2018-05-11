@@ -10,7 +10,7 @@
 
 [Atom Linter](https://atomlinter.github.io/) provider for [NSIS](https://nsis.sourceforge.net), using `makensis`
 
-![Screenshot](https://raw.github.com/idleberg/atom-linter-makensis/master/screenshot.gif)
+![Screenshot](https://raw.github.com/idleberg/atom-linter-makensis/master/screenshot.png)
 
 *Screenshot of linter-makensis with [Fira Code](http://mozilla.github.io/Fira/) font & the [Hopscotch](https://atom.io/themes/hopscotch) theme*
 
@@ -96,8 +96,8 @@ Path to MakeNSIS    | `makensis` | Specify the full path to `makensis`
 PPO Mode            | `true`     | The pre-process mode lints much faster, but ignores warning (unless in strict mode)
 Strict Mode         | `false`    | Treats warnings as errors
 Manage Dependencies | `true`     | When enabled, third-party dependencies will be installed automatically
-Prepend Code        |            | Comma-separated list of commands to be prepended to your script
-Append Code         |            | Comma-separated list of commands to be appended to your script
+Prepend Code        |  `""`      | Semicolon-separated list of commands to be prepended to your script
+Append Code         |  `""`      | Semicolon-separated list of commands to be appended to your script
 Use Wine            | `false`    | When on a non-Windows platform, you can compile installers using [Wine](https://www.winehq.org/)
 
 ## Related

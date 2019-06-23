@@ -1,4 +1,9 @@
+# Package Managers
+bower_components/
 node_modules/
-npm-debug.log
-package-lock.json
+npm-debug.log*
+vendor/
+
+# Project specific
+*.js.map
 todo.md

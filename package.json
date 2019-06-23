@@ -7,6 +7,12 @@
     "name": "Jan T. Sott",
     "url": "http://github.com/idleberg"
   },
+  "scripts": {
+    "build": "webpack --mode none",
+    "dev": "webpack --mode none --watch",
+    "lint": "eslint ./src",
+    "test": "npm run lint"
+  },
   "keywords": [
     "nsis",
     "linter",
@@ -20,6 +26,9 @@
   "engines": {
     "atom": ">=1.19.0 <2.0.0"
   },
+  "activationHooks": [
+    "language-nsis:grammar-used"
+  ],
   "providedServices": {
     "linter": {
       "versions": {
@@ -37,15 +46,17 @@
     "makensis": "^0.17.0"
   },
   "devDependencies": {
-    "eslint": "^5.12.1",
+    "@babel/core": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.14.0",
-    "gulp": "^4.0.0",
-    "gulp-debug": "^4.0.0",
-    "gulp-eslint": "^5.0.0",
-    "gulp-jsonlint": "^1.2.2",
-    "husky": "^1.3.1"
+    "husky": "^2.4.1",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5"
   },
-  "scripts": {
-    "test": "gulp lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

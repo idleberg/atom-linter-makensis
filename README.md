@@ -1,11 +1,10 @@
 # linter-makensis
 
-[![apm](https://img.shields.io/apm/l/linter-makensis.svg?style=flat-square)](https://atom.io/packages/linter-makensis)
-[![apm](https://img.shields.io/apm/v/linter-makensis.svg?style=flat-square)](https://atom.io/packages/linter-makensis)
-[![apm](https://img.shields.io/apm/dm/linter-makensis.svg?style=flat-square)](https://atom.io/packages/linter-makensis)
-[![Travis](https://img.shields.io/travis/idleberg/atom-linter-makensis.svg?style=flat-square)](https://travis-ci.org/idleberg/atom-linter-makensis)
-[![David](https://img.shields.io/david/idleberg/atom-linter-makensis.svg?style=flat-square)](https://david-dm.org/idleberg/atom-linter-makensis)
-[![David](https://img.shields.io/david/dev/idleberg/atom-linter-makensis.svg?style=flat-square)](https://david-dm.org/idleberg/atom-linter-makensis?type=dev)
+[![apm](https://flat.badgen.net/apm/license/linter-makensis)](https://atom.io/packages/linter-makensis)
+[![apm](https://flat.badgen.net/apm/v/linter-makensis)](https://atom.io/packages/linter-makensis)
+[![apm](https://flat.badgen.net/apm/dl/linter-makensis)](https://atom.io/packages/linter-makensis)
+[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-linter-makensis)](https://circleci.com/gh/idleberg/atom-linter-makensis)
+[![David](https://flat.badgen.net/david/dep/idleberg/atom-linter-makensis)](https://david-dm.org/idleberg/atom-linter-makensis)
 [![Gitter](https://img.shields.io/badge/chat-Gitter-ed1965.svg?style=flat-square)](https://gitter.im/NSIS-Dev/Atom)
 
 [Atom Linter](https://atomlinter.github.io/) provider for [NSIS](https://nsis.sourceforge.net), using `makensis`

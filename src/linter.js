@@ -73,7 +73,7 @@ module.exports = {
     }
   },
 
-  activate() {
+  async activate() {
     const CompositeDisposable = require('atom').CompositeDisposable;
     this.subscriptions = new CompositeDisposable;
 

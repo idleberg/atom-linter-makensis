@@ -92,7 +92,7 @@ Your code gets linted whenever you save your document. To tweak the default sett
 Setting             | Default    | Description 
 --------------------|------------|------------
 Path to MakeNSIS    | `makensis` | Specify the full path to `makensis`
-PPO Mode            | `true`     | The pre-process mode lints much faster, but ignores warning (unless in strict mode)
+PPO Mode            | `PPO`      | The pre-process mode lints much faster, but ignores warning (unless in strict mode)
 Strict Mode         | `false`    | Treats warnings as errors
 Manage Dependencies | `true`     | When enabled, third-party dependencies will be installed automatically
 Prepend Code        |  `""`      | Semicolon-separated list of commands to be prepended to your script

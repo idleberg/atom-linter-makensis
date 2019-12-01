@@ -15,11 +15,11 @@
 
 ## Prerequisites
 
-Make sure that NSIS is properly installed with `makensis` in your PATH [environmental variable](http://superuser.com/a/284351/195953).
+Make sure that NSIS is properly installed with `makensis` in your PATH [environment variable](http://superuser.com/a/284351/195953).
 
 ### Windows
 
-Download the NSIS installer from [SourceForge](https://sourceforge.net/p/nsis) and run setup. Once completed, you need to edit your environmental variable manually.
+Download the NSIS installer from [SourceForge](https://sourceforge.net/p/nsis) and run setup. Once completed, you need to edit your environment variable manually.
 
 Alternatively, you can install NSIS through [Scoop](https://github.com/NSIS-Dev/scoop-nsis):
 

@@ -15,11 +15,11 @@ module.exports = {
       order: 1
     },
     preprocessMode: {
-      title: "Pre-process Mode",
-      description: "Linter runs in the much faster pre-process mode, but ignores warning (unless in strict mode)",
-      type: "string",
-      default: "PPO",
-      enum: ["(none)", "PPO", "Safe PPO"],
+      title: 'Pre-process Mode',
+      description: 'Linter runs in the much faster pre-process mode, but ignores warning (unless in strict mode)',
+      type: 'string',
+      default: 'PPO',
+      enum: ['(none)', 'PPO', 'Safe PPO'],
       order: 2
     },
     strictMode: {
@@ -43,16 +43,22 @@ module.exports = {
       properties: {
         preExecute: {
           title: 'Prepend code',
-          description: 'Semicolon-separated list of commands to be prepended to your script',
-          type: 'string',
-          default: '',
+          description: 'Comma-separated list of commands to be prepended to your script',
+          type: 'array',
+          default: [],
+          items: [
+            'string'
+          ],
           order: 1
         },
         postExecute: {
           title: 'Append code',
-          description: 'Semicolon-separated list of commands to be appended to your script',
-          type: 'string',
-          default: '',
+          description: 'Comma-separated list of commands to be appended to your script',
+          type: 'array',
+          default: [],
+          items: [
+            'string'
+          ],
           order: 2
         },
         useWine: {
@@ -63,9 +69,9 @@ module.exports = {
           order: 3
         },
         clearConsole: {
-          title: "Clear Console",
-          description: "Clears the console prior to linting. Only works when in developer mode.",
-          type: "boolean",
+          title: 'Clear Console',
+          description: 'Clears the console prior to linting. Only works when in developer mode.',
+          type: 'boolean',
           default: false,
           order: 4
         }
@@ -134,8 +140,8 @@ module.exports = {
         let outFile;
 
         const options = {
-          preExecute: (preExecute.length > 0) ? preExecute.split(';') : [],
-          postExecute: (postExecute.length > 0) ? postExecute.split(';') : [],
+          preExecute: (preExecute && preExecute.length > 0) ? preExecute : [],
+          postExecute: (postExecute && postExecute.length > 0) ? postExecute : [],
           PPO: null,
           safePPO: null,
           pathToMakensis: Util.getConfig('pathToMakensis'),
@@ -157,7 +163,7 @@ module.exports = {
             break;
         }
 
-        if (Util.getConfig("advanced.clearConsole")) {
+        if (Util.getConfig('advanced.clearConsole')) {
           console.clear();
         }
 

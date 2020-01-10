@@ -118,10 +118,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@nsis/language-data@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@nsis/language-data/-/language-data-0.7.1.tgz#5641317ac100a38e4290be6d4c1e4166acae47c5"
-  integrity sha512-KqRRvwOXnNsSEpTufe53ws4cSf5BgCh7rJLAAgrBeatefBT4SDpyjfGw8J/YisI4XYAKO9c4IZXSpCkRIQbn1Q==
+"@nsis/language-data@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@nsis/language-data/-/language-data-0.7.2.tgz#e1b260c96860a627b95c52442307411e7d5cc71d"
+  integrity sha512-AJNxliTuNlg/Wc568dO0KY8Gm56DO5wX8Yu3GcQbuMo9ttXqW8isX8JGnwPw2KR6ptTXcDZp+kadBv9VkzjYuA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -2307,12 +2307,12 @@ make-dir@^2.0.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
-makensis@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/makensis/-/makensis-0.19.0.tgz#cc8eb2a6f1409c0823b988063b9fe0ea8144309a"
-  integrity sha512-u+4jXdT0Ycg1RyEI8N7VilvIinCtVpjdW9JBtx7PaKVpJ+FO56GFF/cqO31fu+7Qiik9lcJF/HFZmt7CuiUp6A==
+makensis@^0.20.2:
+  version "0.20.2"
+  resolved "https://registry.yarnpkg.com/makensis/-/makensis-0.20.2.tgz#dd544d3ee0c63d675f285b94b638cec5e11a5f6d"
+  integrity sha512-dT4xzuovbJ5ir/Xvd+3ni2azW0pbWdUdi5/jNqLdV/IzZvtzq8IIM9A/Zj6YMcNx2/ZCUuqAtML9B4rGDFiweg==
   dependencies:
-    "@nsis/language-data" "^0.7.1"
+    "@nsis/language-data" "^0.7.2"
 
 mamacro@^0.0.3:
   version "0.0.3"

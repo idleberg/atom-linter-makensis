@@ -4,80 +4,10 @@
 const { compile } = require('makensis');
 const { platform } = require('os');
 const Util = require('./util');
+const configSchema = require('./config');
 
 module.exports = {
-  config: {
-    pathToMakensis: {
-      title: 'Path to MakeNSIS',
-      description: 'Specify the full path to `makensis`',
-      type: 'string',
-      default: 'makensis',
-      order: 1
-    },
-    preprocessMode: {
-      title: 'Pre-process Mode',
-      description: 'Linter runs in the much faster pre-process mode, but ignores warning (unless in strict mode)',
-      type: 'string',
-      default: 'PPO',
-      enum: ['(none)', 'PPO', 'Safe PPO'],
-      order: 2
-    },
-    strictMode: {
-      title: 'Strict Mode',
-      description: 'Treats warnings as errors, requires NSIS v3.0 (or higher)',
-      type: 'boolean',
-      default: false,
-      order: 3
-    },
-    manageDependencies: {
-      title: 'Manage Dependencies',
-      description: 'When enabled, third-party dependencies will be installed automatically',
-      type: 'boolean',
-      default: true,
-      order: 4
-    },
-    advanced: {
-      title: 'Advanced Settings',
-      type: 'object',
-      order: 5,
-      properties: {
-        preExecute: {
-          title: 'Prepend code',
-          description: 'Comma-separated list of commands to be prepended to your script',
-          type: 'array',
-          default: [],
-          items: [
-            'string'
-          ],
-          order: 1
-        },
-        postExecute: {
-          title: 'Append code',
-          description: 'Comma-separated list of commands to be appended to your script',
-          type: 'array',
-          default: [],
-          items: [
-            'string'
-          ],
-          order: 2
-        },
-        useWine: {
-          title: 'Use Wine',
-          description: 'When on a non-Windows platform, you can compile installers using [Wine](https://www.winehq.org/). Make sure to set up `pathToMakensis` accordingly or add `makensis` to the Wine\'s PATH environmental variable.',
-          type: 'boolean',
-          default: false,
-          order: 3
-        },
-        clearConsole: {
-          title: 'Clear Console',
-          description: 'Clears the console prior to linting. Only works when in developer mode.',
-          type: 'boolean',
-          default: false,
-          order: 4
-        }
-      }
-    }
-  },
+  config: configSchema,
 
   async activate() {
     const CompositeDisposable = require('atom').CompositeDisposable;
@@ -134,14 +64,14 @@ module.exports = {
       lint: async (textEditor) => {
         const filePath = textEditor.getPath();
         const fileContents = textEditor.getText();
-        const preExecute = Util.getConfig('advanced.preExecute').trim();
-        const postExecute = Util.getConfig('advanced.postExecute').trim();
+        const preExecute = Util.getConfig('advanced.preExecute');
+        const postExecute = Util.getConfig('advanced.postExecute');
         const useWine = (platform() !== 'win' && Util.getConfig('advanced.useWine') === true) ? true : false;
         let outFile;
 
         const options = {
-          preExecute: (preExecute && preExecute.length > 0) ? preExecute : [],
-          postExecute: (postExecute && postExecute.length > 0) ? postExecute : [],
+          preExecute: Array.isArray(preExecute) ? preExecute : [],
+          postExecute: Array.isArray(postExecute) ? postExecute : [],
           PPO: null,
           safePPO: null,
           pathToMakensis: Util.getConfig('pathToMakensis'),
@@ -163,7 +93,7 @@ module.exports = {
             break;
         }
 
-        if (Util.getConfig('advanced.clearConsole')) {
+        if (Util.getConfig("advanced.clearConsole")) {
           console.clear();
         }
 

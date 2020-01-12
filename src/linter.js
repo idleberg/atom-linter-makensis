@@ -69,7 +69,7 @@ module.exports = {
         const useWine = (platform() !== 'win' && Util.getConfig('advanced.useWine') === true) ? true : false;
         let outFile;
 
-        const options = {
+        let options = {
           preExecute: Array.isArray(preExecute) ? preExecute : [],
           postExecute: Array.isArray(postExecute) ? postExecute : [],
           PPO: null,
@@ -98,7 +98,7 @@ module.exports = {
         }
 
         return compile(filePath, options)
-        .then( (output) => {
+        .then(output => {
           if (atom.inDevMode()) {
             console.info('Compiler Options:', options);
             console.info('Output:', output);
@@ -112,32 +112,16 @@ module.exports = {
             return null;
           }
 
-          return Util.findWarnings(filePath, textEditor, output.stdout, options);
-        })
-        .catch(output => {
-          if (atom.inDevMode()) {
-            console.info('Compiler Options:', options);
-            console.info('Output:', output);
-          }
-
-          if (textEditor.getText() !== fileContents) {
-            if (atom.inDevMode()) {
-              console.warn('File has changed since the lint was triggered');
-            }
-
-            return null;
-          }
-
-          let results = [];
+          const results = [];
 
           if (output.stdout) {
-            let resultsWarn = Util.findWarnings(filePath, textEditor, output.stdout, options);
-            if (resultsWarn) results = results.concat(resultsWarn);
+            const resultsWarn = Util.findWarnings(textEditor, output.stdout, options);
+            if (resultsWarn) results.push(...resultsWarn);
           }
 
           if (output.stderr) {
-            let resultsErr = Util.findErrors(filePath, textEditor, output.stderr);
-            if (resultsErr) results = results.concat(resultsErr);
+            const resultsErr = Util.findErrors(textEditor, output.stderr);
+            if (resultsErr) results.push(...resultsErr);
           }
 
           if (results.length === 0) return null;

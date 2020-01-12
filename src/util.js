@@ -3,17 +3,17 @@ const meta = require('../package.json');
 
 module.exports = {
 
-  findErrors(filePath, textEditor, output) {
-    let results = [];
-    let resultsErr = /(.*)\r?\n.*rror in script:? ".*" on line (\d+)/.exec(output);
+  findErrors(textEditor, output) {
+    const results = [];
+    const resultsErr = /(?<message>.*)\r?\n.*rror in script:? "(?<file>.*)" on line (?<line>\d+)/.exec(output);
 
     if(resultsErr !== null) {
       results.push({
         severity: 'error',
-        excerpt: resultsErr[1],
+        excerpt: resultsErr.groups.message,
         location: {
-          file: filePath,
-          position: helpers.generateRange(textEditor, parseInt(resultsErr[2]) - 1),
+          file: resultsErr.groups.file,
+          position: helpers.generateRange(textEditor, parseInt(resultsErr.groups.line) - 1),
         }
       });
     }
@@ -21,25 +21,23 @@ module.exports = {
     return results;
   },
 
-  findWarnings(filePath, textEditor, output, options) {
-    let results = [];
-    let resultsWarn = output.match(/^warning: (.*) \(.*?:(\d+)\)/gm);
+  findWarnings(textEditor, output, options) {
+    const results = [];
+    const lines = output.split('\n');
 
-    if(resultsWarn !== null) {
-      resultsWarn.forEach((result) => {
-        let severity = (options.strict === true) ? 'error' : 'warning';
-        let match = result.match(/warning: (.*) \(.*?:(\d+)\)/);
+    lines.forEach((result) => {
+      const severity = (options.strict === true) ? 'error' : 'warning';
+      const resultsWarn =(/warning: (?<message>.*) \((?<file>.*)?:(?<line>\d+)\)/).exec(result);
 
-        results.push({
-          severity: severity,
-          excerpt: match[1],
-          location: {
-            file: filePath,
-            position: helpers.generateRange(textEditor, parseInt(match[2]) - 1),
-          }
-        })
-      });
-    }
+      results.push({
+        severity: severity,
+        excerpt: resultsWarn.groups.message,
+        location: {
+          file: resultsWarn.groups.file,
+          position: helpers.generateRange(textEditor, parseInt(resultsWarn.groups.line) - 1),
+        }
+      })
+    });
 
     return results;
   },

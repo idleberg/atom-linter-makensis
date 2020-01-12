@@ -60,12 +60,19 @@ module.exports = {
         default: false,
         order: 3
       },
+      muteANSIDeprecationWarning: {
+        title: 'Mute Deprecation Warning',
+        description: 'Mutes ANSI deprecation warning introduced in NSIS v3.05',
+        type: 'boolean',
+        default: false,
+        order: 4
+      },
       clearConsole: {
         title: "Clear Console",
         description: "Clears the console prior to linting. Only works when in developer mode.",
         type: "boolean",
         default: false,
-        order: 4
+        order: 5
       }
     }
   }

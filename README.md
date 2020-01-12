@@ -102,8 +102,8 @@ Use Wine            | `false`    | When on a non-Windows platform, you can compi
 ## Related
 
 - [atom-language-nsis](https://atom.io/packages/language-nsis) - NSIS package for Atom
-- [node-makensis](https://www.npmjs.com/package/makensis) - Node wrapper for `makensis`
 - [vscode-nsis](https://marketplace.visualstudio.com/items?itemName=idleberg.nsis) - NSIS package for Visual Studio Code
+- [node-makensis](https://www.npmjs.com/package/makensis) - Node wrapper for `makensis`
 
 ## License
 

@@ -89,14 +89,14 @@ Your code gets linted whenever you save your document. To tweak the default sett
 
 ### Settings
 
-Setting             | Default    | Description 
+Setting             | Default    | Description
 --------------------|------------|------------
 Path to MakeNSIS    | `makensis` | Specify the full path to `makensis`
 PPO Mode            | `PPO`      | The pre-process mode lints much faster, but ignores warnings (unless in strict mode)
 Strict Mode         | `false`    | Treats warnings as errors
 Manage Dependencies | `true`     | When enabled, third-party dependencies will be installed automatically
-Prepend Code        |  `""`      | Semicolon-separated list of commands to be prepended to your script
-Append Code         |  `""`      | Semicolon-separated list of commands to be appended to your script
+Prepend Code        |  `""`      | Comma-separated list of commands to be prepended to your script
+Append Code         |  `""`      | Comma-separated list of commands to be appended to your script
 Use Wine            | `false`    | When on a non-Windows platform, you can compile installers using [Wine](https://www.winehq.org/)
 
 ## Related

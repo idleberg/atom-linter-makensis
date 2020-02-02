@@ -24,9 +24,7 @@ module.exports = {
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
       'linter-MakeNSIS:satisfy-dependencies': ( () => {
-        return () => {
-          return satisfyDependencies();
-        };
+        return () => satisfyDependencies('linter-makensis');
       })(this)
     }));
 
@@ -37,7 +35,7 @@ module.exports = {
       this.idleCallbacks.delete(depsCallbackID);
 
       if (!atom.inSpecMode() && Util.getConfig('manageDependencies')) {
-        satisfyDependencies();
+        satisfyDependencies('linter-makensis');
       }
     };
 

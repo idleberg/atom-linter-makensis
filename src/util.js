@@ -90,24 +90,5 @@ module.exports = {
     }
 
     return results;
-  },
-
-  satisfyDependencies() {
-    let atomPackageDeps = require('atom-package-deps');
-    let packageDeps = meta['package-deps'];
-
-    atomPackageDeps.install(meta.name, true);
-
-    packageDeps.forEach((key) => {
-      let val = packageDeps[key];
-
-      if (atom.packages.isPackageDisabled(val)) {
-        if (atom.inDevMode()) {
-          console.log(`Enabling package '${val}'`);
-        }
-
-        results.push(atom.packages.enablePackage(val));
-      }
-    });
   }
 };

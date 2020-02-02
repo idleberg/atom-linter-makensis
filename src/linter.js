@@ -3,6 +3,7 @@
 // Dependencies
 const { compile } = require('makensis');
 const { platform } = require('os');
+const { satisfyDependencies } = require('atom-satisfy-dependencies');
 const Util = require('./util');
 const configSchema = require('./config');
 
@@ -24,7 +25,7 @@ module.exports = {
     this.subscriptions.add(atom.commands.add('atom-workspace', {
       'linter-MakeNSIS:satisfy-dependencies': ( () => {
         return () => {
-          return Util.satisfyDependencies();
+          return satisfyDependencies();
         };
       })(this)
     }));
@@ -36,7 +37,7 @@ module.exports = {
       this.idleCallbacks.delete(depsCallbackID);
 
       if (!atom.inSpecMode() && Util.getConfig('manageDependencies')) {
-        Util.satisfyDependencies();
+        satisfyDependencies();
       }
     };
 

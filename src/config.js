@@ -10,7 +10,7 @@ module.exports = {
     title: "Pre-process Mode",
     description: "Linter runs in the much faster pre-process mode, but ignores warning (unless in strict mode)",
     type: "string",
-    default: "PPO",
+    default: "Safe PPO",
     enum: ["(none)", "PPO", "Safe PPO"],
     order: 2
   },

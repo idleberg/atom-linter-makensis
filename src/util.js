@@ -56,7 +56,7 @@ module.exports = {
           text: "Mute Warning",
           className: "icon icon-gear",
           onDidClick: function() {
-            atom.config.set('linter-makensis.advanced.muteANSIDeprecationWarning', true);
+            atom.config.set(`${meta.name}.advanced.muteANSIDeprecationWarning`, true);
 
             return notification.dismiss();
           }

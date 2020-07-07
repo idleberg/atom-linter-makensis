@@ -1,9 +1,17 @@
-# Package Managers
+# dependencies
 bower_components/
 node_modules/
-npm-debug.log*
 vendor/
 
-# Project specific
+# package manager files
+npm-debug.log*
+yarn-error.log
+yarn.lock_
+shrinkwrap.yaml
+
+# development
+tsconfig.tsbuildinfo
+
+# project specific
 *.js.map
 todo.md

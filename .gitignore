@@ -6,7 +6,7 @@ vendor/
 # package manager files
 npm-debug.log*
 yarn-error.log
-yarn.lock_
+yarn.lock
 shrinkwrap.yaml
 
 # development

@@ -33,7 +33,7 @@ Install NSIS from your distribution's default package manager, for example:
 
 ```sh
 # Debian
-$ sudo apt-get -y install -t unstable nsis
+$ sudo apt-get nsis
 
 # Red Hat
 $ sudo dnf install nsis

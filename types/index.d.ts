@@ -1,3 +1,0 @@
-interface LinterNsisOptions {
-  strict?: boolean;
-}

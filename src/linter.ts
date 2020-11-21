@@ -85,37 +85,36 @@ export default {
           console.clear();
         }
 
-        return compile(filePath, options)
-        .then(output => {
+        const output = await compile(filePath, options)
+
+        if (atom.inDevMode()) {
+          console.info(`[${packageName}] Compiler Options:`, options);
+          console.info(`[${packageName}] Output:`, output);
+        }
+
+        if (textEditor.getText() !== fileContents) {
           if (atom.inDevMode()) {
-            console.info(`[${packageName}] Compiler Options:`, options);
-            console.info(`[${packageName}] Output:`, output);
+            console.warn(`${packageName}] File has changed since the lint was triggered`);
           }
 
-          if (textEditor.getText() !== fileContents) {
-            if (atom.inDevMode()) {
-              console.warn(`${packageName}] File has changed since the lint was triggered`);
-            }
+          return null;
+        }
 
-            return null;
-          }
+        const results = [];
 
-          const results = [];
+        if (output.stdout) {
+          const resultsWarn = Util.findWarnings(textEditor, output.stdout, options);
+          if (resultsWarn) results.push(...resultsWarn);
+        }
 
-          if (output.stdout) {
-            const resultsWarn = Util.findWarnings(textEditor, output.stdout, options);
-            if (resultsWarn) results.push(...resultsWarn);
-          }
+        if (output.stderr) {
+          const resultsErr = Util.findErrors(textEditor, output.stderr);
+          if (resultsErr) results.push(...resultsErr);
+        }
 
-          if (output.stderr) {
-            const resultsErr = Util.findErrors(textEditor, output.stderr);
-            if (resultsErr) results.push(...resultsErr);
-          }
+        if (results.length === 0) return null;
 
-          if (results.length === 0) return null;
-
-          return results;
-        });
+        return results;
       }
     }
   }

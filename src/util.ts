@@ -2,8 +2,53 @@ import { TextEditor } from 'atom';
 import { packageName } from './config';
 import * as atomLinter from 'atom-linter';
 import open from 'open';
+import { CompilerOptions } from 'makensis';
 
 export default {
+  findErrors(textEditor: TextEditor, output: string): unknown[] {
+    const results = [];
+    const resultsErr = /(?<message>.*)\r?\n.*rror in script:? "(?<file>.*)" on line (?<line>\d+)/.exec(output);
+
+    if(resultsErr !== null) {
+      results.push({
+        severity: 'error',
+        excerpt: resultsErr.groups.message,
+        location: {
+          file: resultsErr.groups.file,
+          position: atomLinter.generateRange(textEditor, parseInt(resultsErr.groups.line) - 1),
+        }
+      });
+    }
+
+    return results;
+  },
+
+  findWarnings(textEditor: TextEditor, output: string, options: CompilerOptions): unknown[] {
+    if (!this.getConfig('advanced.muteANSIDeprecationWarning') && output.includes('7998: ANSI targets are deprecated')) {
+      this.showANSIDeprecationWarning();
+    }
+
+    const lines = output.split('\n');
+
+    return lines.map(result => {
+      const resultsWarn = (/warning: (?<message>.*) \((?<file>.*)?:(?<line>\d+)\)/).exec(result);
+      const severity = options.strict
+        ? 'error'
+        : 'warning';
+
+      if (resultsWarn) {
+        return {
+          severity: severity,
+          excerpt: resultsWarn.groups.message,
+          location: {
+            file: resultsWarn.groups.file,
+            position: atomLinter.generateRange(textEditor, parseInt(resultsWarn.groups.line) - 1),
+          }
+        };
+      }
+    }).filter(item => item);
+  },
+
   getConfig(key = null): unknown {
     if (key) {
       return atom.config.get(`${packageName}.${key}`);
@@ -45,49 +90,5 @@ export default {
         }
       ]
     });
-  },
-
-  findErrors(textEditor: TextEditor, output: string): unknown[] {
-    const results = [];
-    const resultsErr = /(?<message>.*)\r?\n.*rror in script:? "(?<file>.*)" on line (?<line>\d+)/.exec(output);
-
-    if(resultsErr !== null) {
-      results.push({
-        severity: 'error',
-        excerpt: resultsErr.groups.message,
-        location: {
-          file: resultsErr.groups.file,
-          position: atomLinter.generateRange(textEditor, parseInt(resultsErr.groups.line) - 1),
-        }
-      });
-    }
-
-    return results;
-  },
-
-  findWarnings(textEditor: TextEditor, output: string, options: LinterNsisOptions): unknown[] {
-    if (!this.getConfig('advanced.muteANSIDeprecationWarning') && output.includes('7998: ANSI targets are deprecated')) {
-      this.showANSIDeprecationWarning();
-    }
-
-    const lines = output.split('\n');
-
-    return lines.map(result => {
-      const resultsWarn = (/warning: (?<message>.*) \((?<file>.*)?:(?<line>\d+)\)/).exec(result);
-      const severity = options.strict
-        ? 'error'
-        : 'warning';
-
-      if (resultsWarn) {
-        return {
-          severity: severity,
-          excerpt: resultsWarn.groups.message,
-          location: {
-            file: resultsWarn.groups.file,
-            position: atomLinter.generateRange(textEditor, parseInt(resultsWarn.groups.line) - 1),
-          }
-        };
-      }
-    }).filter(item => item);
   }
 };

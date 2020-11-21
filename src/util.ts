@@ -65,7 +65,7 @@ export default {
     return results;
   },
 
-  findWarnings(textEditor: TextEditor, output: string, options): unknown[] {
+  findWarnings(textEditor: TextEditor, output: string, options: LinterNsisOptions): unknown[] {
     if (!this.getConfig('advanced.muteANSIDeprecationWarning') && output.includes('7998: ANSI targets are deprecated')) {
       this.showANSIDeprecationWarning();
     }

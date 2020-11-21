@@ -37,7 +37,7 @@ export default {
 
   provideLinter(): unknown {
     return {
-      name: 'makensis',
+      name: 'linter-makensis',
       grammarScopes: ['source.nsis'],
       scope: 'file',
       lintsOnChange: false,

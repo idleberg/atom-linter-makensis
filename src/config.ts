@@ -1,4 +1,6 @@
-module.exports = {
+const packageName = 'linter-makensis';
+
+const configSchema = {
   pathToMakensis: {
     title: 'Path to MakeNSIS',
     description: 'Specify the full path to `makensis`',
@@ -77,3 +79,8 @@ module.exports = {
     }
   }
 };
+
+export {
+  configSchema,
+  packageName
+}

@@ -14,7 +14,7 @@
     "lint": "eslint --cache --fix ./src",
     "prepublishOnly": "npm run build",
     "start": "NODE_ENV=development rollup -w -c",
-    "test": "npm run eslint"
+    "test": "npm run lint"
   },
   "keywords": [
     "nsis",

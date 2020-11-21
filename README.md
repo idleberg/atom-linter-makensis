@@ -63,10 +63,15 @@ Install `linter-makensis` from Atom's [Package Manager](http://flight-manual.ato
 
 Change to your Atom packages directory:
 
-```
-# Windows
-$ cd %USERPROFILE%\.atom\packages
+```powershell
+# Windows Powershell
+cd $Env:USERPROFILE\.atom\packages
 
+# Windows Command Prompt
+$ cd %USERPROFILE%\.atom\packages
+```
+
+```bash
 # Linux & macOS
 $ cd ~/.atom/packages/
 ```

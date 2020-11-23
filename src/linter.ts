@@ -28,7 +28,8 @@ export default {
   },
 
   deactivate(): void {
-    this.idleCallbacks.clear();
+    this.subscriptions?.dispose();
+    this.subscriptions = null;
   },
 
   cleanUp(): void {

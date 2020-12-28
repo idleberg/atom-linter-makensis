@@ -66,9 +66,9 @@ export default {
           wine: useWine
         };
 
-        const outFile = platform() === 'win32'
-          ? 'OutFile NUL'
-          : 'OutFile /dev/null/';
+        const nullDevice = platform() === 'win32'
+          ? 'NUL'
+          : '/dev/null/';
 
         switch (String(Util.getConfig('preprocessMode')).trim()) {
           case 'PPO':
@@ -78,9 +78,12 @@ export default {
             options.safePPO = true;
             break;
           default:
-            options.postExecute.push(outFile);
+            options.postExecute.push(`OutFile ${nullDevice}`);
             break;
-        }
+          }
+
+        options.preExecute.unshift(`SetCompressor /FINAL zlib`);
+        options.postExecute.push(`SetCompress off`);
 
         if (Util.getConfig("advanced.clearConsole")) {
           console.clear();

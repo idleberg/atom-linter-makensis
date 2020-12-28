@@ -1,6 +1,6 @@
 {
   "name": "linter-makensis",
-  "version": "0.15.4",
+  "version": "0.16.0",
   "description": "Atom linter plugin for NSIS, using makensis",
   "license": "MIT OR GPL-2.0",
   "author": {

@@ -23,17 +23,24 @@ const configSchema = {
     default: false,
     order: 3
   },
+  overrideCompression: {
+    title: 'Override Compression',
+    description: 'Overrides compressions settings in script in order to speed up linting process',
+    type: 'boolean',
+    default: true,
+    order: 4
+  },
   manageDependencies: {
     title: 'Manage Dependencies',
     description: 'When enabled, third-party dependencies will be installed automatically',
     type: 'boolean',
     default: true,
-    order: 4
+    order: 6
   },
   advanced: {
     title: 'Advanced Settings',
     type: 'object',
-    order: 5,
+    order: 7,
     properties: {
       preExecute: {
         title: 'Prepend code',

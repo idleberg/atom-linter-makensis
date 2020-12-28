@@ -82,10 +82,12 @@ export default {
             break;
           }
 
-        options.preExecute.unshift(`SetCompressor /FINAL zlib`);
-        options.postExecute.push(`SetCompress off`);
+        if (Util.getConfig('overrideCompression')) {
+          options.preExecute.unshift(`SetCompressor /FINAL zlib`);
+          options.postExecute.push(`SetCompress off`);
+        }
 
-        if (Util.getConfig("advanced.clearConsole")) {
+        if (Util.getConfig('advanced.clearConsole')) {
           console.clear();
         }
 

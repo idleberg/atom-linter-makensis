@@ -4,6 +4,7 @@ import { CompositeDisposable } from 'atom';
 import { configSchema, packageName } from './config';
 import { platform } from 'os';
 import { satisfyDependencies } from 'atom-satisfy-dependencies';
+import console from './log';
 import Util from './util';
 
 export default {
@@ -93,15 +94,11 @@ export default {
 
         const output = await compile(filePath, options)
 
-        if (atom.inDevMode()) {
-          console.info(`[${packageName}] Compiler Options:`, options);
-          console.info(`[${packageName}] Output:`, output);
-        }
+        console.info(`Compiler Options:`, options);
+        console.info(`Output:`, output);
 
         if (textEditor.getText() !== fileContents) {
-          if (atom.inDevMode()) {
-            console.warn(`${packageName}] File has changed since the lint was triggered`);
-          }
+            console.warn(`File has changed since the lint was triggered`);
 
           return null;
         }

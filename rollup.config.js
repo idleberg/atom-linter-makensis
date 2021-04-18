@@ -16,7 +16,10 @@ const plugins = [
       : terser()
   ),
   typescript({
-    allowSyntheticDefaultImports: true
+    allowSyntheticDefaultImports: true,
+    esModuleInterop: true,
+    moduleResolution: 'node',
+    resolveJsonModule: true
   })
 ];
 

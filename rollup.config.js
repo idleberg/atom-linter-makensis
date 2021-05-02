@@ -4,17 +4,15 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import typescript from '@rollup/plugin-typescript';
 
+const production = !process.env.ROLLUP_WATCH;
+
 const plugins = [
   commonjs(),
   json(),
   nodeResolve({
     preferBuiltins: true
   }),
-  (
-    process.env.NODE_ENV === 'development'
-      ? undefined
-      : terser()
-  ),
+  production && terser(),
   typescript({
     allowSyntheticDefaultImports: true,
     esModuleInterop: true,
@@ -30,7 +28,7 @@ export default [
       dir: 'lib',
       exports: 'default',
       format: 'cjs',
-      sourcemap: true
+      sourcemap: production ? false : true
     },
     external: [
       'assert',

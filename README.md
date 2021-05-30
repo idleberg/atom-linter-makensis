@@ -5,7 +5,6 @@
 [![apm](https://flat.badgen.net/apm/dl/linter-makensis)](https://atom.io/packages/linter-makensis)
 [![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-linter-makensis)](https://circleci.com/gh/idleberg/atom-linter-makensis)
 [![David](https://flat.badgen.net/david/dep/idleberg/atom-linter-makensis)](https://david-dm.org/idleberg/atom-linter-makensis)
-[![Gitter](https://img.shields.io/badge/chat-Gitter-ed1965.svg?style=flat-square)](https://gitter.im/NSIS-Dev/Atom)
 
 [Atom Linter](https://atomlinter.github.io/) provider for [NSIS](https://nsis.sourceforge.net), using `makensis`
 

@@ -3,6 +3,6 @@
 .editorconfig export-ignore
 .eslintrc.cjs export-ignore
 .vscode/ export-ignore
-screenshot.gif export-ignore
+screenshot.png export-ignore
 src/ export-ignore
 tools/ export-ignore

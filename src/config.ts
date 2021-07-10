@@ -32,17 +32,34 @@ export default {
       default: true,
       order: 4
     },
+    excludedFiles: {
+      title: 'Excluded Files',
+      description: 'Specify files that will be excluded from linting. Supports [glob patterns](https://github.com/micromatch/micromatch#matching-features).',
+      type: 'array',
+      items: {
+        type: 'string'
+      },
+      default: [],
+      order: 5
+    },
+    lintsOnChange: {
+      title: 'Lints on Change',
+      description: 'Lints whenever your code has changed, rather than when the document has been saved',
+      type: 'boolean',
+      default: false,
+      order: 6
+    },
     manageDependencies: {
       title: 'Manage Dependencies',
       description: 'When enabled, third-party dependencies will be installed automatically',
       type: 'boolean',
       default: true,
-      order: 6
+      order: 7
     },
     advanced: {
       title: 'Advanced Settings',
       type: 'object',
-      order: 7,
+      order: 8,
       properties: {
         preExecute: {
           title: 'Prepend code',

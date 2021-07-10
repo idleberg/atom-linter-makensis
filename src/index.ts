@@ -4,6 +4,7 @@ import config from './config';
 import { name } from '../package.json';
 import { platform } from 'os';
 import console from './log';
+import micromatch from 'micromatch';
 
 export default {
   config: config.schema,
@@ -44,9 +45,18 @@ export default {
       name: 'linter-makensis',
       grammarScopes: ['source.nsis'],
       scope: 'file',
-      lintsOnChange: false,
+      lintsOnChange: config.get('lintsOnSave') || false,
       lint: async (textEditor) => {
         const filePath = textEditor.getPath();
+        const excludedFiles = config.get('excludedFiles') || [];
+
+        if (excludedFiles?.length) {
+          if (micromatch.isMatch(filePath, excludedFiles)) {
+            console.log(`Skipping lint for ${filePath}, found in exclude list`);
+            return;
+          }
+        }
+
         const fileContents = textEditor.getText();
         const preExecute = config.get('advanced.preExecute');
         const postExecute = config.get('advanced.postExecute');

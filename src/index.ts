@@ -1,28 +1,30 @@
 // Dependencies
-import { compile } from 'makensis';
 import { CompositeDisposable } from 'atom';
-import { configSchema, packageName } from './config';
+import config from './config';
+import { name } from '../package.json';
 import { platform } from 'os';
-import { satisfyDependencies } from 'atom-satisfy-dependencies';
 import console from './log';
-import Util from './util';
 
 export default {
-  config: configSchema,
+  config: config.schema,
 
   async activate(): Promise<void> {
     this.subscriptions = new CompositeDisposable;
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'linter-MakeNSIS:open-settings': () => Util.openSettings()
+      'linter-MakeNSIS:open-settings': () => config.open()
     }));
 
     this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'linter-MakeNSIS:satisfy-dependencies': () => satisfyDependencies(packageName)
+      'linter-MakeNSIS:satisfy-dependencies': async () => {
+        const { satisfyDependencies } = await import('atom-satisfy-dependencies');
+        satisfyDependencies(name);
+      }
     }));
 
-    if (!atom.inSpecMode() && Util.getConfig('manageDependencies')) {
-      satisfyDependencies(packageName);
+    if (!atom.inSpecMode() && config.get('manageDependencies')) {
+      const { satisfyDependencies } = await import('atom-satisfy-dependencies');
+      satisfyDependencies(name);
     }
 
     this.cleanUp();
@@ -46,9 +48,9 @@ export default {
       lint: async (textEditor) => {
         const filePath = textEditor.getPath();
         const fileContents = textEditor.getText();
-        const preExecute = Util.getConfig('advanced.preExecute');
-        const postExecute = Util.getConfig('advanced.postExecute');
-        const useWine = platform() !== 'win32' && Util.getConfig('advanced.useWine')
+        const preExecute = config.get('advanced.preExecute');
+        const postExecute = config.get('advanced.postExecute');
+        const useWine = platform() !== 'win32' && config.get('advanced.useWine')
           ? true
           : false;
 
@@ -61,8 +63,8 @@ export default {
             : [],
           PPO: null,
           safePPO: null,
-          pathToMakensis: Util.getConfig('pathToMakensis'),
-          strict: Util.getConfig('strictMode'),
+          pathToMakensis: config.get('pathToMakensis'),
+          strict: config.get('strictMode'),
           verbose: 2,
           wine: useWine
         };
@@ -71,7 +73,7 @@ export default {
           ? 'NUL'
           : '/dev/null/';
 
-        switch (String(Util.getConfig('preprocessMode')).trim()) {
+        switch (String(config.get('preprocessMode')).trim()) {
           case 'PPO':
             options.PPO = true;
             break;
@@ -83,15 +85,16 @@ export default {
             break;
           }
 
-        if (Util.getConfig('overrideCompression')) {
+        if (config.get('overrideCompression')) {
           options.preExecute.unshift(`SetCompressor /FINAL zlib`);
           options.postExecute.push(`SetCompress off`);
         }
 
-        if (Util.getConfig('advanced.clearConsole')) {
+        if (config.get('advanced.clearConsole')) {
           console.clear();
         }
 
+        const { compile } = await import('makensis');
         const output = await compile(filePath, options)
 
         console.info(`Compiler Options:`, options);
@@ -106,12 +109,14 @@ export default {
         const results = [];
 
         if (output.stdout) {
-          const resultsWarn = Util.findWarnings(textEditor, output.stdout, options);
+          const { findWarnings } = await import('./util');
+          const resultsWarn = await findWarnings(textEditor, output.stdout, options);
           if (resultsWarn) results.push(...resultsWarn);
         }
 
         if (output.stderr) {
-          const resultsErr = Util.findErrors(textEditor, output.stderr);
+          const { findErrors } = await import('./util');
+          const resultsErr = await findErrors(textEditor, output.stderr);
           if (resultsErr) results.push(...resultsErr);
         }
 

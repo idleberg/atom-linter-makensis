@@ -1,8 +1,9 @@
-import { CompilerOptions } from 'makensis';
 import { name } from '../package.json';
 import config from './config';
 import { TextEditor } from 'atom';
 import open from 'open';
+
+import type { CompilerOptions } from 'makensis';
 
 async function findErrors(textEditor: TextEditor, output: string): Promise<unknown[]> {
   const atomLinter = await import('atom-linter');

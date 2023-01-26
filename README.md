@@ -3,8 +3,7 @@
 [![apm](https://flat.badgen.net/apm/license/linter-makensis)](https://atom.io/packages/linter-makensis)
 [![apm](https://flat.badgen.net/apm/v/linter-makensis)](https://atom.io/packages/linter-makensis)
 [![apm](https://flat.badgen.net/apm/dl/linter-makensis)](https://atom.io/packages/linter-makensis)
-[![CI](https://img.shields.io/github/workflow/status/idleberg/atom-hyperclick-nsis/CI?style=flat-square)](https://github.com/idleberg/atom-hyperclick-nsis/actions)
-[![David](https://flat.badgen.net/david/dev/idleberg/atom-linter-makensis)](https://david-dm.org/idleberg/atom-linter-makensis?type=dev)
+[![CI](https://img.shields.io/github/actions/workflow/status/idleberg/atom-hyperclick-nsis/default.yml?style=flat-square)](https://github.com/idleberg/atom-hyperclick-nsis/actions)
 
 [Atom Linter](https://atomlinter.github.io/) provider for [NSIS](https://nsis.sourceforge.net), using `makensis`
 

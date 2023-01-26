@@ -14,7 +14,7 @@ export default {
       title: "Pre-process Mode",
       description: "Linter runs in the much faster pre-process mode, but ignores warning (unless in strict mode)",
       type: "string",
-      default: "Safe PPO",
+      default: "PPO",
       enum: ["(none)", "PPO", "Safe PPO"],
       order: 2
     },
